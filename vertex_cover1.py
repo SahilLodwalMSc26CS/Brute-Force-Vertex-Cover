@@ -149,7 +149,6 @@ def save_results(results):
             file.write("--------------------------------\n\n")
 
 # Save results to CSV
-# Save results to CSV
 def save_csv(results):
 
     with open(CSV_file, "w", newline="") as file:
