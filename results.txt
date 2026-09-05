@@ -1,0 +1,78 @@
+BRUTE FORCE VERTEX COVER RESULTS
+================================
+
+Base Complexity Formula: O(2^|V| * |V| * |E|)
+Total Static Vertices (V): 10
+
+Edges (E): 10
+Vertices (V): 10
+VC Size: 6
+Theoretical Complexity Equation: O(2^10 * 10 * 10)
+Calculated Worst-Case Operations: 102,400
+Running Time: 0.424900 ms
+Vertex Cover: [0, 1, 2, 4, 5, 6]
+--------------------------------
+
+Edges (E): 15
+Vertices (V): 10
+VC Size: 4
+Theoretical Complexity Equation: O(2^10 * 10 * 15)
+Calculated Worst-Case Operations: 153,600
+Running Time: 0.221800 ms
+Vertex Cover: [0, 2, 4, 6]
+--------------------------------
+
+Edges (E): 20
+Vertices (V): 10
+VC Size: 5
+Theoretical Complexity Equation: O(2^10 * 10 * 20)
+Calculated Worst-Case Operations: 204,800
+Running Time: 0.448800 ms
+Vertex Cover: [2, 4, 5, 6, 7]
+--------------------------------
+
+Edges (E): 25
+Vertices (V): 10
+VC Size: 8
+Theoretical Complexity Equation: O(2^10 * 10 * 25)
+Calculated Worst-Case Operations: 256,000
+Running Time: 0.930600 ms
+Vertex Cover: [0, 1, 2, 3, 5, 6, 7, 8]
+--------------------------------
+
+Edges (E): 30
+Vertices (V): 10
+VC Size: 7
+Theoretical Complexity Equation: O(2^10 * 10 * 30)
+Calculated Worst-Case Operations: 307,200
+Running Time: 0.255700 ms
+Vertex Cover: [0, 1, 2, 3, 4, 5, 6]
+--------------------------------
+
+Edges (E): 35
+Vertices (V): 10
+VC Size: 8
+Theoretical Complexity Equation: O(2^10 * 10 * 35)
+Calculated Worst-Case Operations: 358,400
+Running Time: 1.017500 ms
+Vertex Cover: [1, 2, 3, 4, 5, 6, 7, 8]
+--------------------------------
+
+Edges (E): 40
+Vertices (V): 10
+VC Size: 8
+Theoretical Complexity Equation: O(2^10 * 10 * 40)
+Calculated Worst-Case Operations: 409,600
+Running Time: 0.980300 ms
+Vertex Cover: [0, 1, 2, 3, 4, 6, 7, 8]
+--------------------------------
+
+Edges (E): 45
+Vertices (V): 10
+VC Size: 9
+Theoretical Complexity Equation: O(2^10 * 10 * 45)
+Calculated Worst-Case Operations: 460,800
+Running Time: 1.079200 ms
+Vertex Cover: [0, 1, 2, 3, 4, 5, 6, 7, 8]
+--------------------------------
+
