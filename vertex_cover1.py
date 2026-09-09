@@ -11,13 +11,11 @@ IMAGE_FILE = "vertex_cover_graphs.png"
 CSV_file = "P1_Results.csv"
 VERTICES = 10
 EDGE_COUNTS = [10, 15, 20, 25, 30, 35, 40, 45]
+
+#Used GenAI for bitmasking for subset making
 #----------------------------------------------#
 
 def generate_connected_edges(num_vertices, target_edge_count):
-    """
-    Generates a list of unique edges ensuring no disconnected nodes or subgraphs.
-    """
-    # 1. Create a random spanning tree to ensure full connectivity
     nodes = list(range(num_vertices))
     random.shuffle(nodes)
 
@@ -27,7 +25,6 @@ def generate_connected_edges(num_vertices, target_edge_count):
         v = random.choice(nodes[:i])
         connected_edges.append((min(u, v), max(u, v)))
 
-    # 2. Pool all remaining possible edges
     all_possible = []
     for u in range(num_vertices):
         for v in range(u + 1, num_vertices):
@@ -35,7 +32,6 @@ def generate_connected_edges(num_vertices, target_edge_count):
             if edge not in connected_edges:
                 all_possible.append(edge)
 
-    # 3. Fill up to the target edge count
     remaining_needed = target_edge_count - len(connected_edges)
     if remaining_needed > 0 and len(all_possible) >= remaining_needed:
         extra_edges = random.sample(all_possible, remaining_needed)
@@ -44,9 +40,7 @@ def generate_connected_edges(num_vertices, target_edge_count):
     return connected_edges
 #----------------------------------------------------#
 
-# Create edge files only if they do not already exist
 def create_edge_files():
-    # Generate all possible edges
     edges = []
     for u in range(VERTICES):
         for v in range(u + 1, VERTICES):
@@ -54,10 +48,9 @@ def create_edge_files():
 
     if len(edges) < VERTICES:
         raise ValueError("Not enough vertices to generate all possible edges.")
-    # Create files
+        
     for n in EDGE_COUNTS:
         filename = f"edges_{n}.txt"
-        # Create only if file does not exist
         if not os.path.exists(filename):
             random_edges = generate_connected_edges(VERTICES, n)
             if len(random_edges) > n:
@@ -71,7 +64,6 @@ def create_edge_files():
             print(f"{filename} already exists. Keeping it unchanged.")
 #----------------------------------------------------#
 
-# Read edges from file
 def read_edges(filename):
     edges = []
     with open(filename, "r") as file:
@@ -96,7 +88,6 @@ def brute_force_vertex_cover(G):
     return set()
 #----------------------------------------------------#
 
-# Draw graph
 def draw_graph(G, cover, axis, edge_count):
     position = nx.spring_layout(G, seed=1)
     colors = [
@@ -120,7 +111,6 @@ def draw_graph(G, cover, axis, edge_count):
     )
 #----------------------------------------------------#
 
-# Calculate theoretical worst-case operations for the complexity string
 def calculate_complexity_ops(v_count, e_count):
     """
     Computes total structural operations based on O(2^V * V * E)
@@ -166,9 +156,7 @@ def save_csv(results):
             ])
 #----------------------------------------------------#
 
-# Main program
 def main():
-    # Create missing files
     create_edge_files()
     figure, axes = plt.subplots(2, 4, figsize=(16, 9))
     axes = axes.flatten()
@@ -176,18 +164,18 @@ def main():
     for i, edge_count in enumerate(EDGE_COUNTS):
         filename = f"edges_{edge_count}.txt"
 
-        # Read the existing/randomly generated file
+
         edges = read_edges(filename)
         graph = nx.Graph()
         graph.add_nodes_from(range(VERTICES))
         graph.add_edges_from(edges)
 
-        # Run brute force Vertex Cover
+
         start = time.perf_counter()
         cover = brute_force_vertex_cover(graph)
         time_ms = (time.perf_counter() - start) * 1000
 
-        # Calculate dynamic operation metric
+
         ops = calculate_complexity_ops(VERTICES, edge_count)
 
         print(
