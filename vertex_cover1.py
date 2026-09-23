@@ -77,15 +77,14 @@ def read_edges(filename):
 def brute_force_vertex_cover(G):
     vertices = list(G.nodes())
     edges = list(G.edges())
+
     for mask in range(1 << len(vertices)):
-        cover = {
-            vertices[i]
-            for i in range(len(vertices))
-            if (mask >> i) & 1
-        }
+        cover = []
+        for i in range(len(vertices)):
+            if (mask >> i) & 1:
+                cover.append(vertices[i])
         if all(u in cover or v in cover for u, v in edges):
             return cover
-    return set()
 #----------------------------------------------------#
 
 def draw_graph(G, cover, axis, edge_count):
